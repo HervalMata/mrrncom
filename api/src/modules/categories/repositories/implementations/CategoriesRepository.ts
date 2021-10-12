@@ -1,5 +1,4 @@
 import { Category } from "../../models/Category";
-import {v4 as uuidV4} from "uuid";
 
 import { ICategoriesRepository, ICreateCategoryDTO } from "../ICategoriesRepository";
 import {getRepository, Repository} from "typeorm";
@@ -7,16 +6,7 @@ import {getRepository, Repository} from "typeorm";
 class CategoriesRepository implements ICategoriesRepository {
     private repository: Repository<Category>;
 
-    private static INSTANCE: CategoriesRepository;
-
-    public static getInstance(): CategoriesRepository {
-        if (!CategoriesRepository.INSTANCE) {
-            CategoriesRepository.INSTANCE = new CategoriesRepository();
-        }
-        return CategoriesRepository.INSTANCE;
-    }
-
-    private constructor() {
+    constructor() {
         this.repository = getRepository(Category);
     }
 
