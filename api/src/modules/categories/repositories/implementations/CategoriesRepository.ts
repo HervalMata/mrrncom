@@ -1,7 +1,7 @@
-import { Category } from "../models/Category";
+import { Category } from "../../models/Category";
 import {v4 as uuidV4} from "uuid";
 
-import { ICategoriesRepository, ICreateCategoryDTO } from "./ICategoriesRepository";
+import { ICategoriesRepository, ICreateCategoryDTO } from "../ICategoriesRepository";
 
 class CategoriesRepository implements ICategoriesRepository {
     private categories: Category[];
