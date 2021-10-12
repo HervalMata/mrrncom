@@ -4,6 +4,9 @@
   "username": "postgres",
   "password": "math3036",
   "database": "mrrncom",
+  "entities": [
+    "./src/modules/**/models/*.ts"
+  ],
   "migrations": [
     "./src/database/migrations/*.ts"
   ],
