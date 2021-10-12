@@ -4,8 +4,8 @@ import {Category} from "../models/Category";
 class ListCategoriesService {
     constructor(private categoryRepositories: ICategoriesRepository) {}
 
-    execute(): Category[] {
-        const categories = this.categoryRepositories.list();
+    async execute(): Promise<Category[]> {
+        const categories = await this.categoryRepositories.list();
         return categories;
     }
 }
