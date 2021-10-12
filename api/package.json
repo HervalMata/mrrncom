@@ -1,0 +1,8 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "Api For Ecommerce",
+  "main": "index.js",
+  "author": "Herval Mata do Amparo",
+  "license": "MIT"
+}
