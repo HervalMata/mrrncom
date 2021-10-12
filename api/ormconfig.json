@@ -3,5 +3,12 @@
   "host": "localhost",
   "username": "postgres",
   "password": "math3036",
-  "database": "mrrncom"
+  "database": "mrrncom",
+  "migrations": [
+    "./src/database/migrations/*.ts"
+  ],
+  "migrationsTableName": "_migrations",
+  "cli": {
+    "migrationsDir": "./src/database/migrations"
+  }
 }
