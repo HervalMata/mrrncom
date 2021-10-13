@@ -25,6 +25,16 @@ class CategoriesRepository implements ICategoriesRepository {
     async findByName(name: string): Promise<Category> {
         return await this.repository.findOne(name);
     }
+
+    async activateCategories(category_id: string, isActive: boolean): Promise<void> {
+        await this.repository
+            .createQueryBuilder()
+            .update()
+            .set({isActive: isActive})
+            .where("id = :category_id")
+            .setParameters({ category_id })
+            .execute();
+    }
 }
 
 export { CategoriesRepository };
