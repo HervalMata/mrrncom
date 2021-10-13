@@ -26,7 +26,7 @@ class CategoriesRepository implements ICategoriesRepository {
         return await this.repository.findOne(name);
     }
 
-    async activateCategories(category_id: string, isActive: boolean): Promise<void> {
+    async activate(category_id: string, isActive: boolean): Promise<void> {
         await this.repository
             .createQueryBuilder()
             .update()
@@ -34,6 +34,20 @@ class CategoriesRepository implements ICategoriesRepository {
             .where("id = :category_id")
             .setParameters({ category_id })
             .execute();
+    }
+
+    async findActivate(
+         name?: string
+    ): Promise<Category[]> {
+        const categoriesQuery = await this.repository
+            .createQueryBuilder("c")
+            .where("c.isActive = :isActive", {
+                isActive: true
+            });
+        if (name) {
+            categoriesQuery.andWhere("c.name")
+        }
+        return await categoriesQuery.getMany();
     }
 }
 
