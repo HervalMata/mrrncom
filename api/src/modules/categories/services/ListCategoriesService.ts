@@ -5,8 +5,7 @@ class ListCategoriesService {
     constructor(private categoryRepositories: ICategoriesRepository) {}
 
     async execute(): Promise<Category[]> {
-        const categories = await this.categoryRepositories.list();
-        return categories;
+        return await this.categoryRepositories.list();
     }
 }
 
