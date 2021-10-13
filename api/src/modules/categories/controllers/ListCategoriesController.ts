@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import {ListCategoriesService} from "../../services/ListCategoriesService";
+import {ListCategoriesService} from "../services/ListCategoriesService";
 import {container} from "tsyringe";
 
 class ListCategoriesController {
