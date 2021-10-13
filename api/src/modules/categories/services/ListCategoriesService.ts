@@ -9,7 +9,7 @@ class ListCategoriesService {
         private categoryRepositories: ICategoriesRepository
     ) {}
 
-    async execute(): Promise<Category[]> {
+    async execute(name: any): Promise<Category[]> {
         return await this.categoryRepositories.list();
     }
 }

@@ -6,7 +6,7 @@ class ListCategoriesController {
     async handle(req: Request, res: Response): Promise<Response> {
         const listCategoriesService = container.resolve(ListCategoriesService);
 
-        const all = await listCategoriesService.execute();
+        const all = await listCategoriesService.execute(name);
 
         return res.json(all);
     }
