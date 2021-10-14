@@ -10,7 +10,7 @@ class CreateUserService {
         private usersRepository: IUsersRepository
     ) {}
 
-    async execute({ name, email, password}: ICreateUserDTO): Promise<void> {
+    async execute({ name, email, password }: ICreateUserDTO): Promise<void> {
         await this.usersRepository.create({ name, email, password });
     }
 }
