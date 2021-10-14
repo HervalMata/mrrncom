@@ -16,14 +16,15 @@ export async function ensureAuthenticated(
     }
     const [, token] = authHeader.split(" ");
     try {
-        const { sub } = verify(token, "7981bfd87d1b88bec0b2d8c2b8aca8bd") as IPayload;
+        const { sub: user_id } = verify(token, "7981bfd87d1b88bec0b2d8c2b8aca8bd") as IPayload;
         const usersRepository = new UsersRepository();
-        const user = await usersRepository.findById(sub);
+        const user = await usersRepository.findById(user_id);
         if (!user) {
             throw new AppError("User does not exists");
         }
+        req.user = { id: user_id };
+        next();
     } catch (error) {
         throw new AppError("Invalid token");
     }
-    next();
 }
