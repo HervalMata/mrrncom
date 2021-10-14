@@ -4,11 +4,11 @@ import {ActivateCategoriesService} from "../services/ActivateCategoriesService";
 
 class ActivateCategoriesController {
     async handle(req: Request, res: Response): Promise<Response> {
-        const { category_id, isActive } = req.query;
+        const { id } = req.params;
+        const { isActive } = req.body;
         const activateCategories = container.resolve(ActivateCategoriesService);
-
         const categories = await activateCategories.execute({
-            category_id: category_id as string,
+            id: id as string,
             // @ts-ignore
             isActive: isActive as boolean
         });

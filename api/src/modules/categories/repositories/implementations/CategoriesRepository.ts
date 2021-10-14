@@ -1,7 +1,8 @@
-import {Category} from "../../models/Category";
+import {getRepository, Repository} from "typeorm";
+import {Category} from "../../entities/Category";
 
 import {ICategoriesRepository, ICreateCategoryDTO} from "../ICategoriesRepository";
-import {getRepository, Repository} from "typeorm";
+
 
 class CategoriesRepository implements ICategoriesRepository {
     private repository: Repository<Category>;
@@ -23,31 +24,35 @@ class CategoriesRepository implements ICategoriesRepository {
     }
 
     async findByName(name: string): Promise<Category> {
-        return await this.repository.findOne(name);
+        return await this.repository.findOne({name});
     }
 
-    async activate(category_id: string, isActive: boolean): Promise<void> {
+    async activate(id: string, isActive: boolean): Promise<void> {
         await this.repository
             .createQueryBuilder()
             .update()
             .set({isActive: isActive})
-            .where("id = :category_id")
-            .setParameters({ category_id })
+            .where("id = :id")
+            .setParameters({ id })
             .execute();
     }
 
     async findActivate(
-         name?: string
+         isActive: boolean
     ): Promise<Category[]> {
         const categoriesQuery = await this.repository
             .createQueryBuilder("c")
             .where("c.isActive = :isActive", {
                 isActive: true
             });
-        if (name) {
+        /*if (name) {
             categoriesQuery.andWhere("c.name")
-        }
+        }*/
         return await categoriesQuery.getMany();
+    }
+
+    async findByID(id: string): Promise<Category> {
+        return await this.repository.findOne(id);
     }
 }
 

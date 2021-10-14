@@ -1,5 +1,5 @@
 import {ICategoriesRepository} from "../repositories/ICategoriesRepository";
-import {Category} from "../models/Category";
+import {Category} from "../entities/Category";
 import {inject, injectable} from "tsyringe";
 
 @injectable()
@@ -9,7 +9,7 @@ class ListCategoriesService {
         private categoryRepositories: ICategoriesRepository
     ) {}
 
-    async execute(name: any): Promise<Category[]> {
+    async execute(): Promise<Category[]> {
         return await this.categoryRepositories.list();
     }
 }

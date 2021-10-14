@@ -1,21 +1,18 @@
+import 'reflect-metadata';
 import {inject, injectable} from "tsyringe";
 import {ICategoriesRepository} from "../repositories/ICategoriesRepository";
-import {Category} from "../models/Category";
-
-interface IRequest {
-    name?: string;
-}
+import {Category} from "../entities/Category";
 
 @injectable()
 class ListActivateCategoriesService {
     constructor(
-        @inject("CategoriesRepositories")
+        @inject("CategoriesRepository")
         private categoriesRepository: ICategoriesRepository
     ) {
     }
 
-    async execute({ name }: IRequest): Promise<Category[]> {
-        return await this.categoriesRepository.findActivate(name);
+    async execute(): Promise<Category[]> {
+        return await this.categoriesRepository.findActivate(true);
     }
 
 }

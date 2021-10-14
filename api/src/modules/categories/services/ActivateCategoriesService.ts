@@ -1,9 +1,10 @@
+import 'reflect-metadata';
 import {inject, injectable} from "tsyringe";
 import {ICategoriesRepository} from "../repositories/ICategoriesRepository";
 
 interface IRequest {
-    category_id?: string;
-    isActive?: boolean;
+    id: string;
+    isActive: boolean;
 }
 
 @injectable()
@@ -14,9 +15,11 @@ class ActivateCategoriesService {
     ) {
     }
 
-    async execute({ category_id, isActive }: IRequest): Promise<void> {
-        return await this.categoriesRepository.activateCategories(
-            category_id, isActive
+    async execute({ id, isActive }: IRequest): Promise<void> {
+        const category = this.categoriesRepository.findByID(id);
+        return await this.categoriesRepository.activate(
+            id,
+            isActive
         );
     }
 }
