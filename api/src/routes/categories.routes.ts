@@ -15,7 +15,7 @@ categoriesRoutes.post("/", createCategoryController.handle);
 
 categoriesRoutes.get("/", listCategoriesController.handle);
 
-categoriesRoutes.put("/activate/:id", activateCategoriesController.handle);
+categoriesRoutes.patch("/activate/:id", activateCategoriesController.handle);
 
 categoriesRoutes.get("/activate", listActivateCategoriesController.handle);
 
