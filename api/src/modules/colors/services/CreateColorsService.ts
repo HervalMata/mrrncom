@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 import {inject, injectable} from "tsyringe";
 import {IColorsRepository} from "../repositories/IColorsRepository";
 import {ICreateColorDTO} from "../dtos/ICreateColorDTO";
