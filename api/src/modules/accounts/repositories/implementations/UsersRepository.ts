@@ -26,6 +26,20 @@ class UsersRepository implements IUsersRepository {
     async findById(id: string): Promise<User> {
         return await this.repository.findOne(id);
     }
+
+    async activateAdmin(id: string, isAdmin: boolean): Promise<void> {
+        await this.repository
+            .createQueryBuilder()
+            .update()
+            .set({isAdmin: isAdmin})
+            .where("id = :id")
+            .setParameters({ id })
+            .execute();
+    }
+
+    async list(): Promise<User[]> {
+        return await this.repository.find();
+    }
 }
 
 export { UsersRepository };
