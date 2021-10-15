@@ -5,7 +5,7 @@ import '../typeorm';
 import '../../container';
 
 import "express-async-errors";
-import {HandlingErrors} from "../../../middlewares/HandlingErrors";
+import {HandlingErrors} from "./middlewares/HandlingErrors";
 import {createConnection} from "typeorm";
 
 import swaggerFile from '../../../swagger.json';

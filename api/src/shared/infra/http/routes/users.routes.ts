@@ -3,9 +3,9 @@ import {CreateUserController} from "../../../../modules/accounts/controllers/Cre
 import multer from "multer";
 import uploadConfig from '../../../../config/upload';
 import {UpdateUserAvatarController} from "../../../../modules/accounts/controllers/UpdateUserAvatarController";
-import {ensureAuthenticated} from "../../../../middlewares/ensureAuthenticated";
-import {ensureAdmin} from "../../../../middlewares/ensureAdmin";
-import {ListUsersController} from "../../../../modules/accounts/services/ListUsersController";
+import {ensureAuthenticated} from "../middlewares/ensureAuthenticated";
+import {ensureAdmin} from "../middlewares/ensureAdmin";
+import {ListUsersController} from "../../../../modules/accounts/controllers/ListUsersController";
 import {ActivateAdminUsersController} from "../../../../modules/accounts/controllers/ActivateAdminUsersController";
 
 const usersRoutes = Router();

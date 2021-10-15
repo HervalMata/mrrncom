@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import {container} from "tsyringe";
-import {ListUsersService} from "./ListUsersService";
+import {ListUsersService} from "../services/ListUsersService";
 
 class ListUsersController {
     async handle(req: Request, res: Response): Promise<Response> {

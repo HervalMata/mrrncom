@@ -4,8 +4,8 @@ import { CreateCategoryController } from "../../../../modules/categories/control
 import { ListCategoriesController} from "../../../../modules/categories/controllers/ListCategoriesController";
 import {ActivateCategoriesController} from "../../../../modules/categories/controllers/ActivateCategoriesController";
 import {ListActivateCategoriesController} from "../../../../modules/categories/controllers/ListActivateCategoriesController";
-import {ensureAuthenticated} from "../../../../middlewares/ensureAuthenticated";
-import {ensureAdmin} from "../../../../middlewares/ensureAdmin";
+import {ensureAuthenticated} from "../middlewares/ensureAuthenticated";
+import {ensureAdmin} from "../middlewares/ensureAdmin";
 
 const categoriesRoutes = Router();
 const createCategoryController = new CreateCategoryController();

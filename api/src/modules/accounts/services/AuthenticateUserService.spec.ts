@@ -2,7 +2,7 @@ import {UsersRepositoryInMemory} from "../repositories/in-memory/UsersRepository
 import {AuthenticateUserService} from "./AuthenticateUserService";
 import {CreateUserService} from "./CreateUserService";
 import {ICreateUserDTO} from "../dtos/ICreateUserDTO";
-import {AppError} from "../../../errors/AppError";
+import {AppError} from "../../../shared/errors/AppError";
 
 let usersRepositoryInMemory: UsersRepositoryInMemory;
 let authenticateUserService: AuthenticateUserService;
