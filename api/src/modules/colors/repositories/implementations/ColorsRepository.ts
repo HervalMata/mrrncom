@@ -3,7 +3,6 @@ import { ICreateColorDTO } from "../../dtos/ICreateColorDTO";
 import { Color } from "../../entities/Color";
 import {getRepository, Repository} from "typeorm";
 
-
 class ColorsRepository implements IColorsRepository{
     private repository: Repository<Color>;
 
