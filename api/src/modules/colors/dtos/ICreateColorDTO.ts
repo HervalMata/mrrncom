@@ -1,4 +1,5 @@
 interface ICreateColorDTO {
+    id?: string;
     name: string;
 }
 
