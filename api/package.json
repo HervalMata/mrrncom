@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules --respawn src/shared/infra/http/server.ts",
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli",
+    "seed:admin": "ts-node-dev src/shared/infra/typeorm/seeds/admin.ts",
     "lint:fix": "eslint --fix . --ext ts,tsx",
     "test": "jest"
   },

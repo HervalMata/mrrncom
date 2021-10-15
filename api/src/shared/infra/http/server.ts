@@ -4,12 +4,14 @@ import 'reflect-metadata'
 import '../typeorm';
 import '../../container';
 
-import { router } from "./routes";
-import swaggerFile from '../../../swagger.json';
-
 import "express-async-errors";
-import {AppError} from "../../../errors/AppError";
 import {HandlingErrors} from "../../../middlewares/HandlingErrors";
+import {createConnection} from "typeorm";
+
+import swaggerFile from '../../../swagger.json';
+import { router } from "./routes";
+
+createConnection();
 
 const app = express();
 
