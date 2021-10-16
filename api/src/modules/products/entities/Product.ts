@@ -1,6 +1,9 @@
-import {Column, CreateDateColumn, Entity, ManyToOne, PrimaryColumn, JoinColumn} from "typeorm";
+import {Column, CreateDateColumn, Entity, ManyToOne, PrimaryColumn, JoinColumn, ManyToMany} from "typeorm";
 import {Category} from "../../categories/entities/Category";
 import {v4 as uuidV4} from "uuid";
+import {Color} from "../../colors/entities/Color";
+import {JoinTable} from "typeorm/browser";
+import {Material} from "../../materials/entities/Material";
 
 @Entity("products")
 class Product {
@@ -35,6 +38,22 @@ class Product {
     @ManyToOne(() => Category)
     @JoinColumn({ name: "category_id", })
     category: Category;
+
+    @ManyToMany(() => Color)
+    @JoinTable({
+        name: "colors_products",
+        joinColumns: [{ name: "product_id" }],
+        inverseJoinColumns: [{ name: "color_id" }],
+    })
+    colors: Color[];
+
+    @ManyToMany(() => Material)
+    @JoinTable({
+        name: "materials_products",
+        joinColumns: [{ name: "product_id" }],
+        inverseJoinColumns: [{ name: "material_id" }],
+    })
+    materials: Material[];
 
     @CreateDateColumn()
     created_at: Date;

@@ -1,43 +1,82 @@
 import {IProductsRepository} from "../IProductsRepository";
 import {ICreateProductDTO} from "../../dtos/ICreateProductDTO";
-import { Product } from "../../entities/Product";
+import {Product} from "../../entities/Product";
+import {getRepository, Repository} from "typeorm";
 
 class ProductsRepository implements IProductsRepository{
 
-    create(data: ICreateProductDTO): Promise<Product> {
-        return Promise.resolve(undefined);
+    private repository: Repository<Product>;
+
+    constructor() {
+        this.repository = getRepository(Product);
     }
 
-    findAvailable(name?: string, category_id?: string): Promise<Product[]> {
-        return Promise.resolve([]);
+    async create({ id, name, description, stock, price, category_id, colors, materials }: ICreateProductDTO): Promise<Product> {
+        const product = this.repository.create({ id, name, description, stock, price, category_id, colors, materials });
+        await this.repository.save(product);
+        return product;
     }
 
-    findById(id: string): Promise<Product> {
-        return Promise.resolve(undefined);
+    async findAvailable(name?: string, category_id?: string): Promise<Product[]> {
+        const productsQuery = await this.repository
+            .createQueryBuilder("p")
+            .where("p.available = :available", { available: true });
+
+        if (name) {
+           productsQuery.andWhere("p.name = :name", { name });
+        }
+
+        if (category_id) {
+            productsQuery.andWhere("p.category_id = :category_id", { category_id });
+        }
+
+        return await productsQuery.getMany();
     }
 
-    findByName(name: string): Promise<Product> {
-        return Promise.resolve(undefined);
+    async findById(id: string): Promise<Product> {
+        return await this.repository.findOne(id);
     }
 
-    findProductByCategory(category_id: string): Promise<Product> {
-        return Promise.resolve(undefined);
+    async findByName(name: string): Promise<Product> {
+        return await this.repository.findOne(name);
     }
 
-    updateAvailability(product_id: string, availability: boolean): Promise<void> {
-        return Promise.resolve(undefined);
+    async findProductByCategory(category_id: string): Promise<Product> {
+        return await this.repository.findOne({
+            where: { category_id }
+        });
     }
 
-    updateOffer(product_id: string, isOffer: boolean, discount: number): Promise<void> {
-        return Promise.resolve(undefined);
+    async updateAvailability(product_id: string, availability: boolean): Promise<void> {
+        await this.repository
+            .createQueryBuilder().update()
+            .set({ available: availability, })
+            .where("id = :product_id")
+            .setParameters({ product_id }).execute();
     }
 
-    updatePrice(product_id: string, price: number): Promise<void> {
-        return Promise.resolve(undefined);
+    async updateOffer(product_id: string, isOffer: boolean, discount: number): Promise<void> {
+        await this.repository
+            .createQueryBuilder().update()
+            .set({ isOffer: isOffer, discount: discount })
+            .where("id = :product_id")
+            .setParameters({ product_id }).execute();
     }
 
-    updateStock(product_id: string, stock: number): Promise<void> {
-        return Promise.resolve(undefined);
+    async updatePrice(product_id: string, price: number): Promise<void> {
+        await this.repository
+            .createQueryBuilder().update()
+            .set({ price: price, })
+            .where("id = :product_id")
+            .setParameters({ product_id }).execute();
+    }
+
+    async updateStock(product_id: string, stock: number): Promise<void> {
+        await this.repository
+            .createQueryBuilder().update()
+            .set({ stock: stock, })
+            .where("id = :product_id")
+            .setParameters({ product_id }).execute();
     }
 
 }
