@@ -83,6 +83,12 @@ class ProductsRepository implements IProductsRepository{
         return await this.repository.find();
     }
 
+    async findByIdAndAvailability(id: string, availability: boolean): Promise<Product> {
+        return await this.repository.findOne({
+            where: [{ id: id }, {availability: true}]
+        });
+    }
+
 }
 
 export { ProductsRepository };
