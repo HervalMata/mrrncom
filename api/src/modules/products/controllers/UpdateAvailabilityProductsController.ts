@@ -1,12 +1,12 @@
 import {Request, Response} from "express";
 import {container} from "tsyringe";
-import {UpdateAvailabilityProductService} from "../services/UpdateAvailabilityProductService";
+import {UpdateAvailabilityProductsService} from "../services/UpdateAvailabilityProductsService";
 
 class UpdateAvailabilityProductsController {
     async handle(req: Request, res: Response): Promise<Response> {
         const { id } = req.params;
         const { availability } = req.body;
-        const updateAvailabilityProducts = container.resolve(UpdateAvailabilityProductService);
+        const updateAvailabilityProducts = container.resolve(UpdateAvailabilityProductsService);
         await updateAvailabilityProducts.execute({
             id: id as string,
             // @ts-ignore

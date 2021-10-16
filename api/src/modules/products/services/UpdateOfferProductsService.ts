@@ -5,7 +5,7 @@ import {IProductsRepository} from "../repositories/IProductsRepository";
 interface IRequest {
     id: string;
     isOffer: boolean;
-    discount: number;
+    discount?: number;
 }
 
 @injectable()
