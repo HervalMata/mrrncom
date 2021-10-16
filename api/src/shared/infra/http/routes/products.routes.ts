@@ -8,6 +8,7 @@ import {UpdateAvailabilityProductsController} from "../../../../modules/products
 import {UpdateStockProductsController} from "../../../../modules/products/controllers/UpdateStockProductsController";
 import {UpdatePriceProductsController} from "../../../../modules/products/controllers/UpdatePriceProductsController";
 import {UpdateOfferProductsController} from "../../../../modules/products/controllers/UpdateOfferProductsController";
+import {ListProductsByCategoryController} from "../../../../modules/products/controllers/ListProductsByCategoryController";
 
 const productsRoutes = Router();
 const createProductsController = new CreateProductsController();
@@ -17,6 +18,7 @@ const updateAvailabilityProductsController = new UpdateAvailabilityProductsContr
 const updateStockProductsController = new UpdateStockProductsController();
 const updatePriceProductsController = new UpdatePriceProductsController();
 const updateOfferProductsController = new UpdateOfferProductsController();
+const listProductsByCategoryController = new ListProductsByCategoryController();
 
 productsRoutes.post("/", ensureAuthenticated, ensureAdmin, createProductsController.handle);
 productsRoutes.get("/", ensureAuthenticated, ensureAdmin, listProductsController.handle);
@@ -32,6 +34,7 @@ productsRoutes.patch("/price", ensureAuthenticated, ensureAdmin, updatePriceProd
 //Update Offer
 productsRoutes.patch("/offer", ensureAuthenticated, ensureAdmin, updateOfferProductsController.handle);
 //List Products By Category
+productsRoutes.get("/category/:category_id", listProductsByCategoryController.handle);
 //Get Product Available
 
 export { productsRoutes };
