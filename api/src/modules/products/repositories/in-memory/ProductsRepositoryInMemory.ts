@@ -66,4 +66,8 @@ class ProductsRepositoryInMemory implements IProductsRepository{
         return this.products;
     }
 
+    async findByIdAndAvailability(id: string, availability: boolean): Promise<Product> {
+        return this.products.find((product) => [product.id === id && product.available === true]);
+    }
+
 }
