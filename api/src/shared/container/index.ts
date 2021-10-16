@@ -9,6 +9,8 @@ import {IMaterialsRepository} from "../../modules/materials/repositories/IMateri
 import {MaterialsRepository} from "../../modules/materials/repositories/implementations/MaterialsRepository";
 import {IProductsRepository} from "../../modules/products/repositories/IProductsRepository";
 import {ProductsRepository} from "../../modules/products/repositories/implementations/ProductsRepository";
+import {IProductsImagesRepository} from "../../modules/products/repositories/IProductsImagesRepository";
+import {ProductsImagesRepository} from "../../modules/products/repositories/implementations/ProductsImagesRepository";
 
 container.registerSingleton<ICategoriesRepository>(
     "CategoriesRepository",
@@ -33,4 +35,9 @@ container.registerSingleton<IMaterialsRepository>(
 container.registerSingleton<IProductsRepository>(
     "ProductsRepository",
     ProductsRepository
+);
+
+container.registerSingleton<IProductsImagesRepository>(
+    "ProductsImagesRepository",
+    ProductsImagesRepository
 );
