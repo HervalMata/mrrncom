@@ -12,6 +12,7 @@ interface IProductsRepository {
     updatePrice(product_id: string, price: number): Promise<void>;
     updateOffer(product_id: string, isOffer: boolean, discount: number): Promise<void>;
     list(): Promise<Product[]>;
+    findByIdAndAvailability(id: string, availability: boolean): Promise<Product>;
 }
 
 export { IProductsRepository };

@@ -14,4 +14,12 @@ productsRoutes.post("/", ensureAuthenticated, ensureAdmin, createProductsControl
 productsRoutes.get("/", ensureAuthenticated, ensureAdmin, listProductsController.handle);
 productsRoutes.get("/available", listAvailableProductsController.handle);
 
+//ToDo
+//Update Available
+//Update Stock
+//Update Price
+//Update Offer
+//List Products By Category
+//Get Product Available
+
 export { productsRoutes };
