@@ -7,6 +7,7 @@ import {ListAvailableProductsController} from "../../../../modules/products/cont
 import {UpdateAvailabilityProductsController} from "../../../../modules/products/controllers/UpdateAvailabilityProductsController";
 import {UpdateStockProductsController} from "../../../../modules/products/controllers/UpdateStockProductsController";
 import {UpdatePriceProductsController} from "../../../../modules/products/controllers/UpdatePriceProductsController";
+import {UpdateOfferProductsController} from "../../../../modules/products/controllers/UpdateOfferProductsController";
 
 const productsRoutes = Router();
 const createProductsController = new CreateProductsController();
@@ -15,6 +16,7 @@ const listAvailableProductsController = new ListAvailableProductsController();
 const updateAvailabilityProductsController = new UpdateAvailabilityProductsController();
 const updateStockProductsController = new UpdateStockProductsController();
 const updatePriceProductsController = new UpdatePriceProductsController();
+const updateOfferProductsController = new UpdateOfferProductsController();
 
 productsRoutes.post("/", ensureAuthenticated, ensureAdmin, createProductsController.handle);
 productsRoutes.get("/", ensureAuthenticated, ensureAdmin, listProductsController.handle);
@@ -28,6 +30,7 @@ productsRoutes.patch("/stock", ensureAuthenticated, ensureAdmin, updateStockProd
 //Update Price
 productsRoutes.patch("/price", ensureAuthenticated, ensureAdmin, updatePriceProductsController.handle);
 //Update Offer
+productsRoutes.patch("/offer", ensureAuthenticated, ensureAdmin, updateOfferProductsController.handle);
 //List Products By Category
 //Get Product Available
 
