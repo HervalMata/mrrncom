@@ -1,8 +1,7 @@
-import {Column, CreateDateColumn, Entity, ManyToOne, PrimaryColumn, JoinColumn, ManyToMany} from "typeorm";
+import {Column, CreateDateColumn, Entity, ManyToOne, PrimaryColumn, JoinColumn, ManyToMany, JoinTable} from "typeorm";
 import {Category} from "../../categories/entities/Category";
 import {v4 as uuidV4} from "uuid";
 import {Color} from "../../colors/entities/Color";
-import {JoinTable} from "typeorm/browser";
 import {Material} from "../../materials/entities/Material";
 
 @Entity("products")

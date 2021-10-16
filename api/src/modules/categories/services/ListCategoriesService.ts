@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 import {ICategoriesRepository} from "../repositories/ICategoriesRepository";
 import {Category} from "../entities/Category";
 import {inject, injectable} from "tsyringe";

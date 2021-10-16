@@ -11,6 +11,7 @@ interface IProductsRepository {
     updateStock(product_id: string, stock: number): Promise<void>;
     updatePrice(product_id: string, price: number): Promise<void>;
     updateOffer(product_id: string, isOffer: boolean, discount: number): Promise<void>;
+    list(): Promise<Product[]>;
 }
 
 export { IProductsRepository };

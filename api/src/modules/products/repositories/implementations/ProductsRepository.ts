@@ -79,6 +79,10 @@ class ProductsRepository implements IProductsRepository{
             .setParameters({ product_id }).execute();
     }
 
+    async list(): Promise<Product[]> {
+        return await this.repository.find();
+    }
+
 }
 
 export { ProductsRepository };

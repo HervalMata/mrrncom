@@ -62,4 +62,8 @@ class ProductsRepositoryInMemory implements IProductsRepository{
         this.products[productIndex].stock = stock;
     }
 
+    async list(): Promise<Product[]> {
+        return this.products;
+    }
+
 }
