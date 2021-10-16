@@ -5,12 +5,14 @@ import {ensureAdmin} from "../middlewares/ensureAdmin";
 import {ListProductsController} from "../../../../modules/products/controllers/ListProductsController";
 import {ListAvailableProductsController} from "../../../../modules/products/controllers/ListAvailableProductsController";
 import {UpdateAvailabilityProductsController} from "../../../../modules/products/controllers/UpdateAvailabilityProductsController";
+import {UpdateStockProductsController} from "../../../../modules/products/controllers/UpdateStockProductsController";
 
 const productsRoutes = Router();
 const createProductsController = new CreateProductsController();
 const listProductsController = new ListProductsController();
 const listAvailableProductsController = new ListAvailableProductsController();
 const updateAvailabilityProductsController = new UpdateAvailabilityProductsController();
+const updateStockProductsController = new UpdateStockProductsController();
 
 productsRoutes.post("/", ensureAuthenticated, ensureAdmin, createProductsController.handle);
 productsRoutes.get("/", ensureAuthenticated, ensureAdmin, listProductsController.handle);
@@ -20,6 +22,7 @@ productsRoutes.get("/available", listAvailableProductsController.handle);
 //Update Available
 productsRoutes.patch("/available", ensureAuthenticated, ensureAdmin, updateAvailabilityProductsController.handle);
 //Update Stock
+productsRoutes.patch("/stock", ensureAuthenticated, ensureAdmin, updateStockProductsController.handle);
 //Update Price
 //Update Offer
 //List Products By Category
