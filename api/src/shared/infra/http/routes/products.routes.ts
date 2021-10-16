@@ -9,6 +9,7 @@ import {UpdateStockProductsController} from "../../../../modules/products/contro
 import {UpdatePriceProductsController} from "../../../../modules/products/controllers/UpdatePriceProductsController";
 import {UpdateOfferProductsController} from "../../../../modules/products/controllers/UpdateOfferProductsController";
 import {ListProductsByCategoryController} from "../../../../modules/products/controllers/ListProductsByCategoryController";
+import {GetAvailableProductController} from "../../../../modules/products/controllers/GetAvailableProductController";
 
 const productsRoutes = Router();
 const createProductsController = new CreateProductsController();
@@ -19,22 +20,16 @@ const updateStockProductsController = new UpdateStockProductsController();
 const updatePriceProductsController = new UpdatePriceProductsController();
 const updateOfferProductsController = new UpdateOfferProductsController();
 const listProductsByCategoryController = new ListProductsByCategoryController();
+const getAvailableProductController = new GetAvailableProductController();
 
 productsRoutes.post("/", ensureAuthenticated, ensureAdmin, createProductsController.handle);
 productsRoutes.get("/", ensureAuthenticated, ensureAdmin, listProductsController.handle);
 productsRoutes.get("/available", listAvailableProductsController.handle);
-
-//ToDo
-//Update Available
 productsRoutes.patch("/available", ensureAuthenticated, ensureAdmin, updateAvailabilityProductsController.handle);
-//Update Stock
 productsRoutes.patch("/stock", ensureAuthenticated, ensureAdmin, updateStockProductsController.handle);
-//Update Price
 productsRoutes.patch("/price", ensureAuthenticated, ensureAdmin, updatePriceProductsController.handle);
-//Update Offer
 productsRoutes.patch("/offer", ensureAuthenticated, ensureAdmin, updateOfferProductsController.handle);
-//List Products By Category
 productsRoutes.get("/category/:category_id", listProductsByCategoryController.handle);
-//Get Product Available
+productsRoutes.get("/:id", getAvailableProductController.handle);
 
 export { productsRoutes };
