@@ -7,6 +7,8 @@ import {IColorsRepository} from "../../modules/colors/repositories/IColorsReposi
 import {ColorsRepository} from "../../modules/colors/repositories/implementations/ColorsRepository";
 import {IMaterialsRepository} from "../../modules/materials/repositories/IMaterialsRepository";
 import {MaterialsRepository} from "../../modules/materials/repositories/implementations/MaterialsRepository";
+import {IProductsRepository} from "../../modules/products/repositories/IProductsRepository";
+import {ProductsRepository} from "../../modules/products/repositories/implementations/ProductsRepository";
 
 container.registerSingleton<ICategoriesRepository>(
     "CategoriesRepository",
@@ -26,4 +28,9 @@ container.registerSingleton<IColorsRepository>(
 container.registerSingleton<IMaterialsRepository>(
     "MaterialsRepository",
     MaterialsRepository
+);
+
+container.registerSingleton<IProductsRepository>(
+    "ProductsRepository",
+    ProductsRepository
 );
