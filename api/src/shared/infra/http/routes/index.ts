@@ -6,6 +6,7 @@ import {authenticateRoutes} from "./authenticate.routes";
 import {colorsRoutes} from "./colors.routes";
 import {materialsRoutes} from "./materials.routes";
 import {productsRoutes} from "./products.routes";
+import {passwordRoutes} from "./password.routes";
 
 const router = Router();
 router.use("/categories", categoriesRoutes);
@@ -14,5 +15,6 @@ router.use(authenticateRoutes);
 router.use("/colors", colorsRoutes);
 router.use("/materials", materialsRoutes);
 router.use("/products", productsRoutes);
+router.use("/password", passwordRoutes);
 
 export { router };
