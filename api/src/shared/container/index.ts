@@ -11,6 +11,10 @@ import {IProductsRepository} from "../../modules/products/repositories/IProducts
 import {ProductsRepository} from "../../modules/products/repositories/implementations/ProductsRepository";
 import {IProductsImagesRepository} from "../../modules/products/repositories/IProductsImagesRepository";
 import {ProductsImagesRepository} from "../../modules/products/repositories/implementations/ProductsImagesRepository";
+import {IUsersTokensRepository} from "../../modules/accounts/repositories/IUsersTokensRepository";
+import {UsersTokensRepository} from "../../modules/accounts/repositories/implementations/UsersTokensRepository";
+import {IDateProvider} from "./providers/DateProvider/IDateProvider";
+import {DayjsDateProvider} from "./providers/DateProvider/implementations/DayjsDateProvider";
 
 container.registerSingleton<ICategoriesRepository>(
     "CategoriesRepository",
@@ -40,4 +44,14 @@ container.registerSingleton<IProductsRepository>(
 container.registerSingleton<IProductsImagesRepository>(
     "ProductsImagesRepository",
     ProductsImagesRepository
+);
+
+container.registerSingleton<IUsersTokensRepository>(
+    "UsersTokensRepository",
+    UsersTokensRepository
+);
+
+container.registerSingleton<IDateProvider>(
+    "DayjaDateProvider",
+    DayjsDateProvider
 );
