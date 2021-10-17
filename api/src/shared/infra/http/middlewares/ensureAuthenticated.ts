@@ -2,6 +2,7 @@ import {NextFunction, Request, Response} from "express";
 import {verify} from "jsonwebtoken";
 import {UsersRepository} from "../../../../modules/accounts/repositories/implementations/UsersRepository";
 import {AppError} from "../../../errors/AppError";
+import auth from "../../../../config/auth";
 
 interface IPayload {
     sub: string;
@@ -16,12 +17,7 @@ export async function ensureAuthenticated(
     }
     const [, token] = authHeader.split(" ");
     try {
-        const { sub: user_id } = verify(token, "7981bfd87d1b88bec0b2d8c2b8aca8bd") as IPayload;
-        const usersRepository = new UsersRepository();
-        const user = await usersRepository.findById(user_id);
-        if (!user) {
-            throw new AppError("User does not exists");
-        }
+        const { sub: user_id } = verify(token, auth.secret_token) as IPayload;
         req.user = { id: user_id };
         next();
     } catch (error) {
