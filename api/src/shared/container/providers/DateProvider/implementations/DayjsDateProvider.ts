@@ -13,6 +13,14 @@ class DayjsDateProvider implements IDateProvider{
         return date.add(hours, "hour").toDate();
     }
 
+    checkIsBefore(start_date: Date, end_date: Date): boolean {
+        return dayjs(start_date).isBefore(end_date);
+    }
+
+    dateNow(): Date {
+        return dayjs().toDate();
+    }
+
 }
 
 export { DayjsDateProvider };
