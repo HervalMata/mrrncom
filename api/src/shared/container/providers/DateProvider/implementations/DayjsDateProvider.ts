@@ -8,6 +8,11 @@ class DayjsDateProvider implements IDateProvider{
         return date.add(days, "day").toDate();
     }
 
+    addHours(hours: number, reference_date: Date): Date {
+        const date = reference_date ? dayjs(reference_date) : dayjs();
+        return date.add(hours, "hour").toDate();
+    }
+
 }
 
 export { DayjsDateProvider };
