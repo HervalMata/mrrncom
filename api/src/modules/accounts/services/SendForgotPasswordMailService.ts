@@ -6,6 +6,7 @@ import {IUsersTokensRepository} from "../repositories/IUsersTokensRepository";
 import {IDateProvider} from "../../../shared/container/providers/DateProvider/IDateProvider";
 import {AppError} from "../../../shared/errors/AppError";
 import {IMailProvider} from "../../../shared/container/providers/MailProvider/IMailProvider";
+import {resolve} from "path";
 
 @injectable()
 class SendForgotPasswordMailService {
@@ -33,10 +34,18 @@ class SendForgotPasswordMailService {
             user_id: user.id,
             expires_date
         });
+
+        const templatePath = resolve(
+            __dirname, "..", "..", "views", "emails", "ForgotPassword.hbs"
+        );
+        const templateVariables = {
+            name: user.name, link: `${process.env.FORGOT_MAIL_URL}${token}`,
+        }
         await this.mailProvider.sendMail({
             to: user.email,
             subject: "Recuperação de senha",
-            body: `O link para o reset de sua senha é ${token}`,
+            path: templatePath,
+            variables: templateVariables,
         });
     }
 }
