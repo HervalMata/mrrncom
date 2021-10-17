@@ -27,7 +27,7 @@ class ResetUsersPasswordService {
 
     async execute({ token, password }: IRequest): Promise<void> {
         console.log("receive token", token);
-        const userToken = await this.usersTokensRepository.findByUserIdAndRefreshToken(token);
+        const userToken = await this.usersTokensRepository.findByRefreshToken(token);
         if (!userToken) {
             throw new AppError("Token Invalid");
         }
