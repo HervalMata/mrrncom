@@ -1,7 +1,6 @@
 import { ICreateUsersProfileDTO } from "../../dtos/ICreateUsersProfileDTO";
 import { UsersProfile } from "../../entities/UsersProfile";
 import {IUsersProfileRepository} from "../IUsersProfileRepository";
-import {IUpdateUsersProfileDTO} from "../../dtos/IUpdateUsersProfileDTO";
 
 class UsersProfileRepositoryInMemory implements IUsersProfileRepository {
     usersProfile: UsersProfile[] = [];
@@ -22,7 +21,7 @@ class UsersProfileRepositoryInMemory implements IUsersProfileRepository {
         return this.usersProfile;
     }
 
-    async update({ id, phone_number, avatar }: IUpdateUsersProfileDTO): Promise<void> {
+    async update(id: string, phone_number: string, avatar: string): Promise<void> {
         const usersProfileIndex = this.usersProfile.findIndex((usersProfile) => usersProfile.id === id);
         this.usersProfile[usersProfileIndex].phone_number = phone_number;
         this.usersProfile[usersProfileIndex].avatar = avatar;

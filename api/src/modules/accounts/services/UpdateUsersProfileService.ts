@@ -1,23 +1,24 @@
 import 'reflect-metadata';
 import {inject, injectable} from "tsyringe";
 import {IUsersProfileRepository} from "../repositories/IUsersProfileRepository";
-import {UsersProfile} from "../entities/UsersProfile";
 
 interface IRequest {
-    user_id: string;
+    id: string;
+    phone_number?: string;
+    avatar?: string;
 }
 
 @injectable()
-class GetUsersProfileService {
+class UpdateUsersProfileService {
 
     constructor(
         @inject("UsersProfileRepository")
         private usersProfileRepository: IUsersProfileRepository
     ) {}
 
-    async execute({ user_id }: IRequest): Promise<UsersProfile> {
-        return await this.usersProfileRepository.findByUserId(user_id);
+    async execute({ id, phone_number, avatar }: IRequest): Promise<void> {
+        return await this.usersProfileRepository.update(id, phone_number, avatar);
     }
 }
 
-export { GetUsersProfileService };
+export { UpdateUsersProfileService };

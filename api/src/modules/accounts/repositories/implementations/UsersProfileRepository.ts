@@ -1,7 +1,6 @@
 import {IUsersProfileRepository} from "../IUsersProfileRepository";
 import {ICreateUsersProfileDTO} from "../../dtos/ICreateUsersProfileDTO";
 import {UsersProfile} from "../../entities/UsersProfile";
-import {IUpdateUsersProfileDTO} from "../../dtos/IUpdateUsersProfileDTO";
 import {getRepository, Repository} from "typeorm";
 
 class UsersProfileRepository implements IUsersProfileRepository {
@@ -27,7 +26,7 @@ class UsersProfileRepository implements IUsersProfileRepository {
         return await this.repository.find();
     }
 
-    async update({ id, phone_number, avatar }: IUpdateUsersProfileDTO): Promise<void> {
+    async update(id: string, phone_number: string, avatar: string): Promise<void> {
         await this.repository
             .createQueryBuilder()
             .update()
