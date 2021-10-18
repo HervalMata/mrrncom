@@ -28,6 +28,10 @@ class UsersProfileRepositoryInMemory implements IUsersProfileRepository {
         this.usersProfile[usersProfileIndex].avatar = avatar;
     }
 
+    async findByCPF(cpf: string): Promise<UsersProfile> {
+        return this.usersProfile.find((usersProfile) => usersProfile.cpf === cpf);
+    }
+
 }
 
 export { UsersProfileRepositoryInMemory };

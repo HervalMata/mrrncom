@@ -37,6 +37,10 @@ class UsersProfileRepository implements IUsersProfileRepository {
             .execute();
     }
 
+    async findByCPF(cpf: string): Promise<UsersProfile> {
+        return await this.repository.findOne(cpf);
+    }
+
 }
 
 export { UsersProfileRepository };

@@ -17,6 +17,8 @@ import {IDateProvider} from "./providers/DateProvider/IDateProvider";
 import {DayjsDateProvider} from "./providers/DateProvider/implementations/DayjsDateProvider";
 import {IMailProvider} from "./providers/MailProvider/IMailProvider";
 import {EtherealMailProvider} from "./providers/MailProvider/implementations/EtherealMailProvider";
+import {IUsersProfileRepository} from "../../modules/accounts/repositories/IUsersProfileRepository";
+import {UsersProfileRepository} from "../../modules/accounts/repositories/implementations/UsersProfileRepository";
 
 container.registerSingleton<ICategoriesRepository>(
     "CategoriesRepository",
@@ -61,4 +63,9 @@ container.registerSingleton<IDateProvider>(
 container.registerInstance<IMailProvider>(
     "EtherealMailProvider",
     new EtherealMailProvider()
-)
+);
+
+container.registerSingleton<IUsersProfileRepository>(
+    "UsersProfileRepository",
+    UsersProfileRepository
+);

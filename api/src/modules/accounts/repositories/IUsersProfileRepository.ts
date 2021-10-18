@@ -7,6 +7,7 @@ interface IUsersProfileRepository {
     findByUserId(user_id: string): Promise<UsersProfile>;
     update(data: IUpdateUsersProfileDTO): Promise<void>;
     list(): Promise<UsersProfile[]>;
+    findByCPF(cpf: string): Promise<UsersProfile>;
 }
 
 export { IUsersProfileRepository };
