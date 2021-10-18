@@ -40,4 +40,9 @@ usersRoutes.patch(
     updateUsersProfileController.handle
 );
 
+//ToDo
+//create module customer and refactor usersProfile for customerProfile
+//create module address
+//create module reviews
+
 export { usersRoutes };

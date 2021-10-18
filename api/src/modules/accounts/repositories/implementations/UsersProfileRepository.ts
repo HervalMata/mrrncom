@@ -40,6 +40,10 @@ class UsersProfileRepository implements IUsersProfileRepository {
         return await this.repository.findOne(cpf);
     }
 
+    async findById(id: string): Promise<UsersProfile> {
+        return await this.repository.findOne(id);
+    }
+
 }
 
 export { UsersProfileRepository };

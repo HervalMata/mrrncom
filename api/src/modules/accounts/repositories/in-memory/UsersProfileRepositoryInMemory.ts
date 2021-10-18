@@ -31,6 +31,10 @@ class UsersProfileRepositoryInMemory implements IUsersProfileRepository {
         return this.usersProfile.find((usersProfile) => usersProfile.cpf === cpf);
     }
 
+    async findById(id: string): Promise<UsersProfile> {
+        return this.usersProfile.find((usersProfile) => usersProfile.id === id);
+    }
+
 }
 
 export { UsersProfileRepositoryInMemory };

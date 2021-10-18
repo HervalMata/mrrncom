@@ -8,6 +8,7 @@ interface IUsersProfileRepository {
     update(id: string, phone_number: string, avatar: string): Promise<void>;
     list(): Promise<UsersProfile[]>;
     findByCPF(cpf: string): Promise<UsersProfile>;
+    findById(id: string): Promise<UsersProfile>;
 }
 
 export { IUsersProfileRepository };

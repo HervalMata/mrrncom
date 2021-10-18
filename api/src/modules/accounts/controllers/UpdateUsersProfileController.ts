@@ -5,12 +5,13 @@ import {UpdateUsersProfileService} from "../services/UpdateUsersProfileService";
 class UpdateUsersProfileController {
     async handle(req: Request, res: Response): Promise<Response> {
         const { id } = req.params;
-        const { phone_number, avatar } = req.body;
+        const { phone_number } = req.body;
+        const avatar = req.file.filename;
         const updateUsersProfileService = container.resolve(UpdateUsersProfileService);
         await updateUsersProfileService.execute({
-            id: id as string,
-            phone_number: phone_number as string,
-            avatar: avatar as string,
+            id,
+            phone_number,
+            avatar,
         });
         return res.status(200).send();
     }

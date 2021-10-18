@@ -38,7 +38,7 @@ export class CreateUsersProfile1634511268703 implements MigrationInterface {
                 ],
                 foreignKeys: [
                     {
-                        name: "FK_Users_Tokens_User",
+                        name: "FK_Users_Profiles_User",
                         referencedTableName: "users",
                         referencedColumnNames: ["id"],
                         columnNames: ["user_id"],

@@ -1,6 +1,7 @@
 import 'reflect-metadata';
 import {inject, injectable} from "tsyringe";
 import {IUsersProfileRepository} from "../repositories/IUsersProfileRepository";
+import {deleteFile} from "../../../utils/file";
 
 interface IRequest {
     id: string;
@@ -17,7 +18,12 @@ class UpdateUsersProfileService {
     ) {}
 
     async execute({ id, phone_number, avatar }: IRequest): Promise<void> {
-        return await this.usersProfileRepository.update(id, phone_number, avatar);
+        const usersProfile = await this.usersProfileRepository.findById(id);
+        if (usersProfile.avatar) {
+            await deleteFile(`./tmp/avatar/${usersProfile.avatar}`);
+        }
+        usersProfile.avatar = avatar;
+        return await this.usersProfileRepository.update(id, phone_number, usersProfile.avatar);
     }
 }
 
