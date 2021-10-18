@@ -19,14 +19,16 @@ export class CreateUsersProfile1634511268703 implements MigrationInterface {
                     {
                         name: "cpf",
                         type: "varchar",
+                        isUnique: true,
                     },
                     {
                         name: "phone_number",
                         type: "varchar",
                     },
                     {
-                        name: "image",
+                        name: "avatar",
                         type: "varchar",
+                        isNullable: true,
                     },
                     {
                         name: "created_at",
