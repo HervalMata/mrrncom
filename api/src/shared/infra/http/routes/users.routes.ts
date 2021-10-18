@@ -8,6 +8,7 @@ import {ensureAdmin} from "../middlewares/ensureAdmin";
 import {ListUsersController} from "../../../../modules/accounts/controllers/ListUsersController";
 import {ActivateAdminUsersController} from "../../../../modules/accounts/controllers/ActivateAdminUsersController";
 import {CreateUsersProfileController} from "../../../../modules/accounts/controllers/CreateUsersProfileController";
+import {ListUsersProfileController} from "../../../../modules/accounts/controllers/ListUsersProfileController";
 
 const usersRoutes = Router();
 const uploadAvatar = multer(uploadConfig.upload("./tmp/avatar"));
@@ -17,6 +18,7 @@ const updateUserAvatarController = new UpdateUserAvatarController();
 const listUsersController = new ListUsersController();
 const activateAdminUsersController = new ActivateAdminUsersController();
 const createUsersProfileController = new CreateUsersProfileController();
+const listUsersProfileController = new ListUsersProfileController();
 
 usersRoutes.post("/", createUserController.handle);
 usersRoutes.get("/", ensureAuthenticated, listUsersController.handle);
@@ -27,5 +29,6 @@ usersRoutes.patch(
     updateUserAvatarController.handle
 );
 usersRoutes.post("/profile", ensureAuthenticated, createUsersProfileController.handle);
+usersRoutes.get("/profile", ensureAuthenticated, ensureAdmin, listUsersProfileController.handle);
 
 export { usersRoutes };
