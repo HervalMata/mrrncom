@@ -21,6 +21,7 @@ const activateAdminUsersController = new ActivateAdminUsersController();
 const createUsersProfileController = new CreateUsersProfileController();
 const listUsersProfileController = new ListUsersProfileController();
 const getUsersProfileController = new GetUsersProfileController();
+const updateUsersProfileController = new UpdateUserAvatarController();
 
 usersRoutes.post("/", createUserController.handle);
 usersRoutes.get("/", ensureAuthenticated, listUsersController.handle);
@@ -33,5 +34,10 @@ usersRoutes.patch(
 usersRoutes.post("/profile", ensureAuthenticated, createUsersProfileController.handle);
 usersRoutes.get("/profile", ensureAuthenticated, ensureAdmin, listUsersProfileController.handle);
 usersRoutes.get("/profile/:user_id", ensureAuthenticated, getUsersProfileController.handle);
+usersRoutes.patch(
+    "/profile/:id", ensureAuthenticated,
+    uploadAvatar.single("avatar"),
+    updateUsersProfileController.handle
+);
 
 export { usersRoutes };
