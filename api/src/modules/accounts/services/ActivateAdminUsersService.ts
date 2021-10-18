@@ -16,7 +16,7 @@ class ActivateAdminUsersService {
     }
 
     async execute({ id, isAdmin }: IRequest): Promise<void> {
-        const user = this.usersRepository.findByID(id);
+        const user = this.usersRepository.findById(id);
         return await this.usersRepository.activateAdmin(
             id,
             isAdmin

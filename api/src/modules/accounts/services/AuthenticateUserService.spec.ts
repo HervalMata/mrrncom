@@ -11,6 +11,7 @@ let createUserService: CreateUserService;
 describe('Authenticate user',  () => {
     beforeEach( () => {
         usersRepositoryInMemory = new UsersRepositoryInMemory();
+        // @ts-ignore
         authenticateUserService = new AuthenticateUserService(usersRepositoryInMemory);
         createUserService = new CreateUserService(usersRepositoryInMemory);
     });
