@@ -9,6 +9,7 @@ import {ListUsersController} from "../../../../modules/accounts/controllers/List
 import {ActivateAdminUsersController} from "../../../../modules/accounts/controllers/ActivateAdminUsersController";
 import {CreateUsersProfileController} from "../../../../modules/accounts/controllers/CreateUsersProfileController";
 import {ListUsersProfileController} from "../../../../modules/accounts/controllers/ListUsersProfileController";
+import {GetUsersProfileController} from "../../../../modules/accounts/controllers/GetUsersProfileController";
 
 const usersRoutes = Router();
 const uploadAvatar = multer(uploadConfig.upload("./tmp/avatar"));
@@ -19,6 +20,7 @@ const listUsersController = new ListUsersController();
 const activateAdminUsersController = new ActivateAdminUsersController();
 const createUsersProfileController = new CreateUsersProfileController();
 const listUsersProfileController = new ListUsersProfileController();
+const getUsersProfileController = new GetUsersProfileController();
 
 usersRoutes.post("/", createUserController.handle);
 usersRoutes.get("/", ensureAuthenticated, listUsersController.handle);
@@ -30,5 +32,6 @@ usersRoutes.patch(
 );
 usersRoutes.post("/profile", ensureAuthenticated, createUsersProfileController.handle);
 usersRoutes.get("/profile", ensureAuthenticated, ensureAdmin, listUsersProfileController.handle);
+usersRoutes.get("/profile/:user_id", ensureAuthenticated, getUsersProfileController.handle);
 
 export { usersRoutes };
