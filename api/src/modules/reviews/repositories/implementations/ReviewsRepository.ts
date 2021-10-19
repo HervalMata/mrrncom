@@ -22,12 +22,12 @@ class ReviewsRepository implements IReviewsRepository {
         return await this.repository.findOne(id);
     }
 
-    async findByProduct(product_id: string): Promise<Review> {
-        return await this.repository.findOne(product_id);
+    async findByProduct(product_id: string): Promise<Review[]> {
+        return await this.repository.find({product_id});
     }
 
-    async findByUser(user_id: string): Promise<Review> {
-        return await this.repository.findOne(user_id);
+    async findByUser(user_id: string): Promise<Review[]> {
+        return await this.repository.find({user_id});
     }
 
     async list(): Promise<Review[]> {

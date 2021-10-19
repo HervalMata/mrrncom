@@ -35,10 +35,13 @@ class ProductsRepositoryInMemory implements IProductsRepository{
         return this.products.find((product) => product.name === name);
     }
 
-    async findProductByCategory(category_id: string): Promise<Product> {
-        return this.products.find(
-            (product) => product.category_id === category_id
-        );
+    async findProductByCategory(category_id: string): Promise<Product[]> {
+        return this.products.filter((products) => {
+            if (products.category_id === category_id) {
+                return products;
+            }
+            return null;
+        });
     }
 
     async updateAvailability(product_id: string, availability: boolean): Promise<void> {

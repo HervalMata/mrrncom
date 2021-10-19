@@ -17,12 +17,22 @@ class ReviewsRepositoryInMemory implements IReviewsRepository{
         return this.reviews.find((review) => review.id === id);;
     }
 
-    async findByProduct(product_id: string): Promise<Review> {
-        return this.reviews.find((review) => review.product_id === product_id);;
+    async findByProduct(product_id: string): Promise<Review[]> {
+        return this.reviews.filter((reviews) => {
+            if (reviews.product_id === product_id) {
+                return reviews;
+            }
+            return null;
+        });
     }
 
-    async findByUser(user_id: string): Promise<Review> {
-        return this.reviews.find((review) => review.user_id === user_id);
+    async findByUser(user_id: string): Promise<Review[]> {
+        return this.reviews.filter((reviews) => {
+            if (reviews.user_id === user_id) {
+                return reviews;
+            }
+            return null;
+        });
     }
 
     async list(): Promise<Review[]> {
