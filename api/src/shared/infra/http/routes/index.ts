@@ -8,6 +8,7 @@ import {materialsRoutes} from "./materials.routes";
 import {productsRoutes} from "./products.routes";
 import {passwordRoutes} from "./password.routes";
 import {addressRoutes} from "./address.routes";
+import {reviewsRoutes} from "./reviews.routes";
 
 const router = Router();
 router.use("/categories", categoriesRoutes);
@@ -18,5 +19,6 @@ router.use("/materials", materialsRoutes);
 router.use("/products", productsRoutes);
 router.use("/password", passwordRoutes);
 router.use("/address", addressRoutes);
+router.use("/reviews", reviewsRoutes);
 
 export { router };
