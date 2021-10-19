@@ -1,9 +1,10 @@
 import {Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryColumn} from "typeorm";
 import {User} from "../../accounts/entities/User";
+import {Product} from "../../products/entities/Product";
 import {v4 as uuidV4} from "uuid";
 
-@Entity("address")
-class Address {
+@Entity("reviews")
+class Review {
 
     @PrimaryColumn()
     id: string;
@@ -16,34 +17,17 @@ class Address {
     user: User;
 
     @Column()
-    isBilling: boolean;
+    product_id: string;
+
+    @ManyToOne(() => Product)
+    @JoinColumn({ name: "product_id" })
+    product: Product;
 
     @Column()
-    isShipping: boolean;
+    description: string;
 
     @Column()
-    street: string;
-
-    @Column()
-    number: number;
-
-    @Column()
-    complement: string;
-
-    @Column()
-    district: string;
-
-    @Column()
-    postal_code: string;
-
-    @Column()
-    city: string;
-
-    @Column()
-    state: string;
-
-    @Column()
-    country: string;
+    rating: number;
 
     @CreateDateColumn()
     created_at: Date;
@@ -55,4 +39,4 @@ class Address {
     }
 }
 
-export { Address };
+export { Review };
