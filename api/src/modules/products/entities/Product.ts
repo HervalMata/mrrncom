@@ -1,8 +1,19 @@
-import {Column, CreateDateColumn, Entity, ManyToOne, PrimaryColumn, JoinColumn, ManyToMany, JoinTable} from "typeorm";
+import {
+    Column,
+    CreateDateColumn,
+    Entity,
+    ManyToOne,
+    PrimaryColumn,
+    JoinColumn,
+    ManyToMany,
+    JoinTable,
+    OneToMany
+} from "typeorm";
 import {Category} from "../../categories/entities/Category";
 import {v4 as uuidV4} from "uuid";
 import {Color} from "../../colors/entities/Color";
 import {Material} from "../../materials/entities/Material";
+import {WishlistProduct} from "../../wishlists/entities/WishlistProduct";
 
 @Entity("products")
 class Product {
@@ -53,6 +64,9 @@ class Product {
         inverseJoinColumns: [{ name: "material_id" }],
     })
     materials: Material[];
+
+    @OneToMany(() => WishlistProduct, wishlistProduct => wishlistProduct.product)
+    wishlistProducts: WishlistProduct[];
 
     @CreateDateColumn()
     created_at: Date;
