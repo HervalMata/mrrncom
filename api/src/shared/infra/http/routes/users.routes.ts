@@ -41,8 +41,13 @@ usersRoutes.patch(
 );
 
 //ToDo
-//create module customer and refactor usersProfile for customerProfile
-//create module address
-//create module reviews
+//create module wishlists
+//create module coupons
+//create module orderItems
+//create module typeDelivery
+//create module statusDelivery
+//create module paymentMethod
+//create module paymentStatus
+//create module orders
 
 export { usersRoutes };
