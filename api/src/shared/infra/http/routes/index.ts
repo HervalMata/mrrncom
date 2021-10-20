@@ -9,6 +9,7 @@ import {productsRoutes} from "./products.routes";
 import {passwordRoutes} from "./password.routes";
 import {addressRoutes} from "./address.routes";
 import {reviewsRoutes} from "./reviews.routes";
+import {wishlistsRoutes} from "./wishlists.routes";
 
 const router = Router();
 router.use("/categories", categoriesRoutes);
@@ -20,5 +21,6 @@ router.use("/products", productsRoutes);
 router.use("/password", passwordRoutes);
 router.use("/address", addressRoutes);
 router.use("/reviews", reviewsRoutes);
+router.use("/wishlists", wishlistsRoutes);
 
 export { router };
