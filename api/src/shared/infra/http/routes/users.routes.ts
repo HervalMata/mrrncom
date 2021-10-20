@@ -41,7 +41,6 @@ usersRoutes.patch(
 );
 
 //ToDo
-//create module wishlists
 //create module coupons
 //create module orderItems
 //create module typeDelivery
