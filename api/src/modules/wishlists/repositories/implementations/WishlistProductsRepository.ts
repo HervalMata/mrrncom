@@ -2,7 +2,7 @@ import {IWishlistProductsRepository} from "../IWishlistProductsRepository";
 import {ICreateWishlistProductsDTO} from "../../dtos/ICreateWishlistProductsDTO";
 import {WishlistProduct} from "../../entities/WishlistProduct";
 import {getRepository, Repository} from "typeorm";
-import {Wishlist} from "../../entities/Wishlist";
+import {Wishlist} from "../../entities/Wishlist";;
 
 class WishlistProductsRepository implements IWishlistProductsRepository {
     private repository: Repository<WishlistProduct>;
@@ -13,7 +13,8 @@ class WishlistProductsRepository implements IWishlistProductsRepository {
 
     async create(data: ICreateWishlistProductsDTO): Promise<void> {
         const { wishlist, product } = data;
-        const wishlist_product = this.repository.create({ wishlist, product });
+        // @ts-ignore
+        const wishlist_product = this.repository.create({wishlist, product});
         await this.repository.save(wishlist_product);
     }
 

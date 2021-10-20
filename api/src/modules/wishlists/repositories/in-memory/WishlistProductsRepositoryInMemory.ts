@@ -2,14 +2,15 @@ import {IWishlistProductsRepository} from "../IWishlistProductsRepository";
 import {ICreateWishlistProductsDTO} from "../../dtos/ICreateWishlistProductsDTO";
 import {Wishlist} from "../../entities/Wishlist";
 import {WishlistProduct} from "../../entities/WishlistProduct";
+import {Product} from "../../../products/entities/Product";
 
 class WishlistProductsRepositoryInMemory implements IWishlistProductsRepository {
     wishlist_product: WishlistProduct[] = [];
 
-    async create({ wishlist, product }: ICreateWishlistProductsDTO): Promise<void> {
+    async create(data: ICreateWishlistProductsDTO): Promise<void> {
         const wishlist_products = new WishlistProduct();
         Object.assign(wishlist_products, {
-            wishlist, product
+            Wishlist, Product
         });
         this.wishlist_product.push(wishlist_products);
     }

@@ -21,6 +21,10 @@ import {IUsersProfileRepository} from "../../modules/accounts/repositories/IUser
 import {UsersProfileRepository} from "../../modules/accounts/repositories/implementations/UsersProfileRepository";
 import {IAddressRepository} from "../../modules/address/repositories/IAddressRepository";
 import {AddressRepository} from "../../modules/address/repositories/implementations/AddressRepository";
+import {IWishlistsRepository} from "../../modules/wishlists/repositories/IWishlistsRepository";
+import {WishlistsRepository} from "../../modules/wishlists/repositories/implementations/WishlistsRepository";
+import {IWishlistProductsRepository} from "../../modules/wishlists/repositories/IWishlistProductsRepository";
+import {WishlistProductsRepository} from "../../modules/wishlists/repositories/implementations/WishlistProductsRepository";
 
 container.registerSingleton<ICategoriesRepository>(
     "CategoriesRepository",
@@ -75,4 +79,14 @@ container.registerSingleton<IUsersProfileRepository>(
 container.registerSingleton<IAddressRepository>(
     "AddressRepository",
     AddressRepository
+);
+
+container.registerSingleton<IWishlistsRepository>(
+    "WishlistsRepository",
+    WishlistsRepository
+);
+
+container.registerSingleton<IWishlistProductsRepository>(
+    "WishlistProductsRepository",
+    WishlistProductsRepository
 );
