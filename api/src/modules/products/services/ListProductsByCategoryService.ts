@@ -15,7 +15,7 @@ class ListProductsByCategoryService {
         private productsRepository: IProductsRepository
     ) {}
 
-    async execute({ category_id }: IRequest): Promise<Product> {
+    async execute({ category_id }: IRequest): Promise<Product[]> {
         return await this.productsRepository.findProductByCategory(category_id);
     }
 }
