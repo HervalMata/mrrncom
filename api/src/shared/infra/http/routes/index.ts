@@ -10,6 +10,7 @@ import {passwordRoutes} from "./password.routes";
 import {addressRoutes} from "./address.routes";
 import {reviewsRoutes} from "./reviews.routes";
 import {wishlistsRoutes} from "./wishlists.routes";
+import {couponsRoutes} from "./coupons.routes";
 
 const router = Router();
 router.use("/categories", categoriesRoutes);
@@ -22,5 +23,6 @@ router.use("/password", passwordRoutes);
 router.use("/address", addressRoutes);
 router.use("/reviews", reviewsRoutes);
 router.use("/wishlists", wishlistsRoutes);
+router.use("/coupons", couponsRoutes);
 
 export { router };
