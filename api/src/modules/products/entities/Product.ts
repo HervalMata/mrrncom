@@ -30,16 +30,16 @@ class Product {
     @Column()
     available: boolean;
 
-    @Column()
+    @Column("int")
     stock: number;
 
-    @Column()
+    @Column("decimal")
     price: number;
 
     @Column()
     isOffer: boolean;
 
-    @Column()
+    @Column("decimal")
     discount: number;
 
     @Column()
