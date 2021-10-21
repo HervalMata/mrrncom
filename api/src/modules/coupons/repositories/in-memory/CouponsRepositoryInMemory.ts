@@ -37,6 +37,10 @@ class CouponsRepositoryInMemory implements ICouponsRepository {
         this.coupons[couponIndex].value = value;
     }
 
+    async findByCode(code: string): Promise<Coupon> {
+        return this.coupons.find((coupon) => coupon.code === code);
+    }
+
 }
 
 export { CouponsRepositoryInMemory };

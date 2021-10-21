@@ -40,6 +40,10 @@ class CouponsRepository implements ICouponsRepository {
             .execute();
     }
 
+    async findByCode(code: string): Promise<Coupon> {
+        return await this.repository.findOne(code);
+    }
+
 }
 
 export { CouponsRepository };
