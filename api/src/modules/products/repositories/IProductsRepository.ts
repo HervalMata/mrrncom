@@ -2,7 +2,7 @@ import {ICreateProductDTO} from "../dtos/ICreateProductDTO";
 import {Product} from "../entities/Product";
 
 interface IProductsRepository {
-    create(data: ICreateProductDTO): Promise<Product>;
+    create(data: ICreateProductDTO): Promise<void>;
     findByName(name: string): Promise<Product>;
     findById(id: string): Promise<Product>;
     findProductByCategory(category_id: string): Promise<Product[]>;

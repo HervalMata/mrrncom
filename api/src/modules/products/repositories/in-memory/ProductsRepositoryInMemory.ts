@@ -5,13 +5,12 @@ import {Product} from "../../entities/Product";
 class ProductsRepositoryInMemory implements IProductsRepository{
     products: Product[] = [];
 
-    async create({ id, name, description, stock, price, category_id, colors, materials }: ICreateProductDTO): Promise<Product> {
+    async create({ id, name, description, stock, price, category_id, colors, materials }: ICreateProductDTO): Promise<void> {
         const product = new Product();
         Object.assign(product, {
             id, name, description, stock, price, category_id, colors, materials
         });
         this.products.push(product);
-        return product;
     }
 
     async findAvailable(name?: string, category_id?: string): Promise<Product[]> {

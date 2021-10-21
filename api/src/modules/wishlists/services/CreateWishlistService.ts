@@ -24,8 +24,9 @@ class CreateWishlistService {
         }
         await this.wishlistsRepository.create({id, user_id, products});
         const wishlist = await this.wishlistsRepository.findWishlistByUser(user_id);
-        const product_created = products.map((product_created) =>{
+        products.map((product_created) =>{
             const product = this.productsRepository.findById(product_created.id);
+            // @ts-ignore
             this.wishlistProductsRepository.create({product, wishlist});
         });
     }

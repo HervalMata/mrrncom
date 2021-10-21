@@ -13,7 +13,6 @@ class WishlistProductsRepository implements IWishlistProductsRepository {
 
     async create(data: ICreateWishlistProductsDTO): Promise<void> {
         const { wishlist, product } = data;
-        // @ts-ignore
         const wishlist_product = this.repository.create({wishlist, product});
         await this.repository.save(wishlist_product);
     }
