@@ -39,6 +39,10 @@ class DeliveryRepository implements IDeliveryRepository {
             .execute();
     }
 
+    async findByPostalCode(postal_code: string): Promise<Delivery> {
+        return await this.repository.findOne(postal_code);
+    }
+
 }
 
 export { DeliveryRepository };

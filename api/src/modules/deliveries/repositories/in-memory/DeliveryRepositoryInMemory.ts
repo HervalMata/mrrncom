@@ -39,6 +39,10 @@ class DeliveryRepositoryInMemory implements IDeliveryRepository {
         this.deliveries[deliveryIndex].prize = prize;
         this.deliveries[deliveryIndex].address_id = address_id;
     }
+
+    async findByPostalCode(postal_code: string): Promise<Delivery> {
+        return this.deliveries.find((delivery) => delivery.postal_code === postal_code);
+    }
 }
 
 export { DeliveryRepositoryInMemory };

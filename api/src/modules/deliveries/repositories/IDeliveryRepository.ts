@@ -8,6 +8,7 @@ interface IDeliveryRepository {
     findByStatus(status: Status): Promise<Delivery[]>;
     list(): Promise<Delivery[]>;
     update(data: ICreateDeliveryDTO): Promise<void>;
+    findByPostalCode(postal_code: string): Promise<Delivery>;
 }
 
 export { IDeliveryRepository };
