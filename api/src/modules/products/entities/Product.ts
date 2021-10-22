@@ -68,6 +68,21 @@ class Product {
     @OneToMany(() => WishlistProduct, wishlistProduct => wishlistProduct.product)
     wishlistProducts: WishlistProduct[];
 
+    @Column('int')
+    alturaCM: number;
+
+    @Column('int')
+    larguraCM: number;
+
+    @Column('int')
+    profundidadeCM: number;
+
+    @Column('int')
+    pesoKg: number;
+
+    @Column()
+    freteGratis: boolean;
+
     @CreateDateColumn()
     created_at: Date;
 

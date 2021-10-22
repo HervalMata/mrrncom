@@ -41,12 +41,11 @@ usersRoutes.patch(
 );
 
 //ToDo
-//create module coupons
-//create module orderItems
-//create module typeDelivery
-//create module statusDelivery
-//create module paymentMethod
-//create module paymentStatus
-//create module orders
+//config postal office - node_correios, config, helper - calcbox
+//create module delivery - status, code postal, type, cost, prize, address, order, payload
+//config payment - node-pagseguro, helper, config
+//create module payment - value, format, enrolment, status, address, card info(name, phone_number, area code, birthday, credit_card_token, cpf), order, payload, pagseguro_code
+//create module orderItems - product_id, quantity, price,
+//create module orders - user_id, order_items, payment_id, delivery_id, status, created_at, payload
 
 export { usersRoutes };
