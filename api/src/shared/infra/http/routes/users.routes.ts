@@ -41,7 +41,6 @@ usersRoutes.patch(
 );
 
 //ToDo
-//config postal office - node_correios, config, helper - calcbox
 //create module delivery - status, code postal, type, cost, prize, address, order, payload
 //config payment - node-pagseguro, helper, config
 //create module payment - value, format, enrolment, status, address, card info(name, phone_number, area code, birthday, credit_card_token, cpf), order, payload, pagseguro_code
