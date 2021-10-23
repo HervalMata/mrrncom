@@ -41,7 +41,6 @@ usersRoutes.patch(
 );
 
 //ToDo
-//config payment - node-pagseguro, helper, config
 //create module payment - value, format, enrolment, status, address, card info(name, phone_number, area code, birthday, credit_card_token, cpf), order, payload, pagseguro_code
 //create module orderItems - product_id, quantity, price,
 //create module orders - user_id, order_items, payment_id, delivery_id, status, created_at, payload
