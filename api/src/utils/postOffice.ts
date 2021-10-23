@@ -1,7 +1,7 @@
 import Correios from "node-correios";
 import {Product} from "../modules/products/entities/Product";
 import { nCdServico, sCepOrigem } from "../config/postOffices";
-import { calcBox } from "./calcBox";
+import { calcBox } from "../helpers/calcBox";
 
 interface IPostOffice {
     products: Product[];

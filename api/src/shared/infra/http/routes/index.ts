@@ -11,6 +11,7 @@ import {addressRoutes} from "./address.routes";
 import {reviewsRoutes} from "./reviews.routes";
 import {wishlistsRoutes} from "./wishlists.routes";
 import {couponsRoutes} from "./coupons.routes";
+import {deliveriesRoutes} from "./deliveries.routes";
 
 const router = Router();
 router.use("/categories", categoriesRoutes);
@@ -24,5 +25,6 @@ router.use("/address", addressRoutes);
 router.use("/reviews", reviewsRoutes);
 router.use("/wishlists", wishlistsRoutes);
 router.use("/coupons", couponsRoutes);
+router.use("/deliveries", deliveriesRoutes);
 
 export { router };
