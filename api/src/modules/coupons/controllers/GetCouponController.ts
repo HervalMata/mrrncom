@@ -6,7 +6,7 @@ class GetCouponController {
     async handle(req: Request, res: Response): Promise<Response> {
         const { id } = req.params;
         const getCouponService = container.resolve(GetCouponService);
-        await getCouponService .execute({
+        await getCouponService.execute({
             id: id as string,
         });
         return res.status(200).send();
