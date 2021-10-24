@@ -11,6 +11,8 @@ interface ICreatePaymentDTO {
     status: Status;
     pagseguroCode: string;
     payload: string[];
+    senderHash: any;
+    order: any;
 }
 
 export { ICreatePaymentDTO };

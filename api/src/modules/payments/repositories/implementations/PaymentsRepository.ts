@@ -10,6 +10,10 @@ class PaymentsRepository implements IPaymentsRepository {
         this.repository = getRepository(Payment);
     }
 
+    async findById(id: string): Promise<Payment> {
+        return await this.repository.findOne(id);
+    }
+
     async create(data: ICreatePaymentDTO): Promise<void> {
         const payment = this.repository.create(data);
         await this.repository.save(payment);

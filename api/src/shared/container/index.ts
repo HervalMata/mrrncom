@@ -29,6 +29,8 @@ import {ICouponsRepository} from "../../modules/coupons/repositories/ICouponsRep
 import {CouponsRepository} from "../../modules/coupons/repositories/implementations/CouponsRepository";
 import {IDeliveryRepository} from "../../modules/deliveries/repositories/IDeliveryRepository";
 import {DeliveryRepository} from "../../modules/deliveries/repositories/implementations/DeliveryRepository";
+import {IPaymentsRepository} from "../../modules/payments/repositories/IPaymentsRepository";
+import {PaymentsRepository} from "../../modules/payments/repositories/implementations/PaymentsRepository";
 
 container.registerSingleton<ICategoriesRepository>(
     "CategoriesRepository",
@@ -103,4 +105,9 @@ container.registerSingleton<ICouponsRepository>(
 container.registerSingleton<IDeliveryRepository>(
     "DeliveryRepository",
     DeliveryRepository
+);
+
+container.registerSingleton<IPaymentsRepository>(
+    "PaymentsRepository",
+    PaymentsRepository
 );

@@ -8,6 +8,7 @@ interface IPaymentsRepository {
     findByStatus(status: Status): Promise<Payment[]>;
     findByMethod(method: Method): Promise<Payment[]>;
     update(data: ICreatePaymentDTO): Promise<void>;
+    findById(id: string): Promise<Payment>;
 }
 
 export { IPaymentsRepository };
